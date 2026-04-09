@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
+
+  <!-- Background Image -->
+  <img src="{{ hero.background.url }}"
+       class="absolute inset-0 w-full h-full object-cover scale-110">
+
+  <!-- Gradient Overlay -->
+  <div class="absolute inset-0 bg-gradient-to-br from-blue-900/80 via-blue-800/60 to-black/80"></div>
+
+  <!-- Glass Blur -->
+  <div class="absolute inset-0 backdrop-blur-[2px]"></div>
+
+  <!-- Content -->
+  <div class="relative z-20 text-center px-6 max-w-4xl" data-aos="fade-up">
+
+    <!-- Title -->
+    <h1 class="text-4xl md:text-7xl font-bold leading-tight tracking-tight mb-6">
+      {{ hero.title }}
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="text-lg md:text-2xl text-blue-200 mb-10">
+      {{ hero.subtitle }}
+    </p>
+
+    <!-- CTA -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+
+      <a href="/about/"
+         class="px-8 py-4 rounded-xl bg-white text-blue-900 font-semibold shadow-lg
+         hover:shadow-2xl hover:scale-105 transition-all duration-300">
+        Learn More
+      </a>
+
+      <a href="/contact/"
+         class="px-8 py-4 rounded-xl border border-white/40 text-white font-semibold
+         backdrop-blur-md hover:bg-white/10 hover:scale-105 transition-all duration-300">
+        Contact Us
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <div class="w-6 h-10 border-2 border-white rounded-full flex items-start justify-center p-1">
+      <div class="w-1 h-2 bg-white rounded-full"></div>
+    </div>
+  </div>
+
+  <!-- Bottom Gradient Fade -->
+  <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/70 to-transparent"></div>
+
+</section>
+
+{% include "components/principal.html" %}
+
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="relative overflow-hidden py-40">
+  <div class="absolute inset-0 opacity-20 pointer-events-none">
+    <div class="absolute top-10 left-10 w-72 h-72 bg-blue-200 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/3 right-10 w-80 h-80 bg-purple-200 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 left-1/2 w-72 h-72 bg-amber-200 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="relative max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <p class="text-sm uppercase tracking-[0.35em] text-blue-600 mb-4">Secure School Payments</p>
+      <h1 class="text-4xl font-bold text-slate-900 mb-6">Secure online payment system</h1>
+      <p class="max-w-3xl mx-auto text-lg text-slate-600 leading-relaxed">Use the account details below for safe and fast bank payments. Copy the account number, add the learner reference, and confirm your payment directly with your bank.</p>
+    </div>
+
+    <div class="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] items-start">
+      <div class="space-y-8">
+        <div class="bg-white border border-slate-200 shadow-lg rounded-3xl p-8">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <p class="text-sm uppercase tracking-[0.35em] text-slate-400">Bank details</p>
+              <h2 class="text-2xl font-semibold text-slate-900">Payment account</h2>
+            </div>
+            <span class="inline-flex items-center rounded-full bg-blue-100 text-blue-700 px-3 py-1 text-sm font-semibold">FNB</span>
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div class="rounded-3xl bg-slate-50 p-5 border border-slate-100">
+              <p class="text-sm text-slate-500">School</p>
+              <p class="mt-2 text-lg font-semibold text-slate-900">Boresetse Secondary School</p>
+            </div>
+            <div class="rounded-3xl bg-slate-50 p-5 border border-slate-100">
+              <p class="text-sm text-slate-500">Branch Code</p>
+              <p class="mt-2 text-lg font-semibold text-slate-900">250655</p>
+            </div>
+            <div class="rounded-3xl bg-slate-50 p-5 border border-slate-100 sm:col-span-2">
+              <p class="text-sm text-slate-500">Account Number</p>
+              <div class="mt-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <span id="accountNumber" class="text-2xl tracking-widest font-semibold text-slate-900">60162057852</span>
+                <button onclick="copyAccount()" class="inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-slate-800">Copy Account</button>
+              </div>
+            </div>
+            <div class="rounded-3xl bg-slate-50 p-5 border border-slate-100">
+              <p class="text-sm text-slate-500">Account Type</p>
+              <p class="mt-2 text-lg font-semibold text-slate-900">Current Account</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-3">
+          <div class="rounded-3xl bg-blue-600 text-white p-6 shadow-xl">
+            <p class="text-sm uppercase tracking-[0.35em] opacity-80">Step 1</p>
+            <p class="mt-4 text-lg font-semibold">Make payment using the school account details.</p>
+          </div>
+          <div class="rounded-3xl bg-slate-900 text-white p-6 shadow-xl">
+            <p class="text-sm uppercase tracking-[0.35em] opacity-80">Step 2</p>
+            <p class="mt-4 text-lg font-semibold">Use learner name and surname as the payment reference.</p>
+          </div>
+          <div class="rounded-3xl bg-white border border-slate-200 p-6 shadow-xl">
+            <p class="text-sm uppercase tracking-[0.35em] text-slate-400">Step 3</p>
+            <p class="mt-4 text-lg font-semibold text-slate-900">Confirm payment and save your receipt for school records.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-8">
+        <div class="rounded-[2.5rem] bg-gradient-to-br from-slate-950 to-blue-900 p-8 text-white shadow-2xl">
+          <div class="flex items-center gap-4 mb-6">
+            <span class="inline-flex h-14 w-14 items-center justify-center rounded-3xl bg-white/10 text-2xl">💳</span>
+            <div>
+              <p class="text-sm uppercase tracking-[0.35em] text-slate-300">Quick payment guide</p>
+              <h3 class="text-3xl font-semibold">Pay with confidence</h3>
+            </div>
+          </div>
+          <p class="text-slate-300 leading-relaxed">Use the account details above for bank transfers. Please ensure the student reference is included exactly as shown so we can process your payment without delay.</p>
+        </div>
+
+        <div class="rounded-3xl bg-white border border-slate-200 p-8 shadow-lg">
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <p class="text-sm uppercase tracking-[0.35em] text-slate-400">Need help?</p>
+              <h3 class="text-2xl font-semibold text-slate-900">Contact finance support</h3>
+            </div>
+          </div>
+          <p class="mt-4 text-slate-600 leading-relaxed">If you have questions about payment options, references, or receipts, we are happy to assist.</p>
+          <div class="mt-6 grid gap-4 sm:grid-cols-2">
+            <div class="rounded-3xl bg-slate-50 p-5">
+              <p class="text-sm text-slate-500">Email</p>
+              <p class="mt-2 font-semibold text-slate-900">finance@boresetse.edu</p>
+            </div>
+            <div class="rounded-3xl bg-slate-50 p-5">
+              <p class="text-sm text-slate-500">Phone</p>
+              <p class="mt-2 font-semibold text-slate-900">+27 21 555 0123</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function copyAccount() {
+  const text = document.getElementById("accountNumber").innerText;
+  navigator.clipboard.writeText(text);
+  alert("Account number copied!");
+}
+</script>
+
+{% endblock %}

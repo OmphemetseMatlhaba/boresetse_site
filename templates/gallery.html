@@ -1,0 +1,29 @@
+<!-- templates/gallery.html -->
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="max-w-7xl mx-auto px-6 py-40 ">
+  <div class="text-center mb-16">
+    <p class="text-sm uppercase tracking-[0.35em] text-blue-600 mb-4">Photo Gallery</p>
+    <h1 class="text-4xl font-bold text-slate-900 mb-6"">Explore moments from our school community</h1>
+    <div class="line-accent mx-auto mt-8"></div>
+  </div>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {% for img in images %}
+      <div class="card overflow-hidden group" data-aos="zoom-in">
+        
+          <div class="relative overflow-hidden rounded-3xl shadow-2xl h-64">
+          <img src="{{ img.image.url }}" alt="{{ img.title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+        </div>
+        {% if img.caption %}
+        <div class="p-4">
+          <p class="text-body">{{ img.caption }}</p>
+        </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

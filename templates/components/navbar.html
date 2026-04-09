@@ -1,0 +1,116 @@
+<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg border-b 
+{% if request.path == '/' %}
+  bg-white/10 border-white/20 text-white
+{% else %}
+  bg-white/80 border-gray-100 text-gray-800 shadow-sm
+{% endif %} transition-all duration-300">
+
+  <div class="max-w-7xl mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+
+      <!-- LEFT: Hamburger -->
+          <button id="hamburger-btn"
+      class="p-2 rounded-xl transition-all duration-300 hover:scale-105 text-black
+      {% if request.path == '/' %}hover:bg-white/20{% else %}hover:bg-gray-100{% endif %}">
+      
+      <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path id="hamburger-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"></path>
+        <path id="close-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M6 18L18 6M6 6l12 12" class="hidden"></path>
+      </svg>
+    </button>
+
+      <!-- CENTER: Logo -->
+      <a href="/" class="flex items-center justify-center group">
+        <img src="{{ school.logo.url|default:'https://i.ibb.co/bM0ZXtz1/Screenshot-2026-04-07-113638-removebg-preview-1.png' }}"
+             alt="{{ school.name }}"
+             class="h-14 w-auto transition-transform duration-300 group-hover:scale-110">
+      </a>
+
+      <!-- RIGHT: Desktop CTA -->
+      <div class="hidden md:block">
+        <a href="/payments/"
+           class="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-semibold shadow hover:shadow-lg hover:scale-105 transition">
+          Pay Now
+        </a>
+      </div>
+
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div id="mobile-menu"
+      class="hidden mt-6 rounded-2xl p-6 backdrop-blur-xl border
+      {% if request.path == '/' %}
+        bg-white/10 border-white/20
+      {% else %}
+        bg-white shadow-lg border-gray-200
+      {% endif %}
+      transition-all duration-300">
+
+      <div class="flex flex-col space-y-5">
+
+        {% with link_class="flex items-center gap-3 text-base font-medium transition-all duration-300 hover:translate-x-1" %}
+
+        <a href="/" class="{{ link_class }} {% if request.path == '/' %}font-semibold text-blue-600{% endif %}">
+          🏠 Home
+        </a>
+
+        <a href="/about/" class="{{ link_class }} {% if request.path == '/about/' %}font-semibold text-blue-600{% endif %}">
+          ℹ️ About
+        </a>
+
+        <a href="/gallery/" class="{{ link_class }} {% if request.path == '/gallery/' %}font-semibold text-blue-600{% endif %}">
+          🖼️ Gallery
+        </a>
+
+        <a href="/mural-activities/" class="{{ link_class }} {% if request.path == '/mural-activities/' %}font-semibold text-blue-600{% endif %}">
+          🎨 Activities
+        </a>
+
+        <a href="/top-students/" class="{{ link_class }} {% if request.path == '/top-students/' %}font-semibold text-blue-600{% endif %}">
+          🏆 Top Students
+        </a>
+
+        <a href="/staff-sgb/" class="{{ link_class }} {% if request.path == '/staff-sgb/' %}font-semibold text-blue-600{% endif %}">
+          👥 Staff & SGB
+        </a>
+
+        <a href="/newsletter/" class="{{ link_class }} {% if request.path == '/newsletter/' %}font-semibold text-blue-600{% endif %}">
+          📰 Newsletter
+        </a>
+
+        <a href="/contact/" class="{{ link_class }} {% if request.path == '/contact/' %}font-semibold text-blue-600{% endif %}">
+          📩 Contact
+        </a>
+
+        <!-- CTA -->
+        <a href="/payments/"
+           class="mt-4 inline-flex items-center justify-center px-5 py-3 rounded-xl
+           bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold
+           shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300">
+          💳 Make Payment
+        </a>
+
+        {% endwith %}
+
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const btn = document.getElementById('hamburger-btn');
+      const menu = document.getElementById('mobile-menu');
+      const openIcon = document.getElementById('hamburger-icon');
+      const closeIcon = document.getElementById('close-icon');
+
+      btn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+        openIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    });
+  </script>
+</nav>
