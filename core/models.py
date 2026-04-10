@@ -130,5 +130,27 @@ class Newsletter(models.Model):
     def __str__(self):
         return self.title
 
- 
+class RCL (models.Model):
+    
+    name = models.CharField(max_length=100)
+    position = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.name} - {self.position}"
+    
+class head_of_rcl(models.Model):
+    image= models.ImageField(upload_to="rcl/")
+    name = models.CharField(max_length=100)
+    position = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.name} - {self.position}" 
+    
+
+class rcl_group(models.Model):
+    image= models.ImageField(upload_to="rcl/")
+    year = models.CharField(max_length=20)
+    def __str__(self):
+        return f"RCL Group - {self.year}"
+    
     

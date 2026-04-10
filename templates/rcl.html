@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="relative py-40 overflow-hidden">
+
+  <!-- 🔥 WATERMARK -->
+  <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+    <img src="{{ school.logo.url }}"
+         class="w-[600px] opacity-5 grayscale">
+  </div>
+
+  <!-- 🔥 BLUE + GOLD GLOW -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 right-10 w-72 h-72 bg-amber-400 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-6">
+
+    <!-- 🔥 HEADER -->
+    <div class="text-center mb-20">
+      <p class="text-sm uppercase tracking-[0.3em] text-blue-600 mb-4">
+        Leadership Team
+      </p>
+
+      <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+        Meet Our RCL Members
+      </h1>
+
+      <p class="text-slate-600 max-w-2xl mx-auto">
+        Our RCL members are dedicated student leaders committed to fostering a positive school environment, promoting student welfare, and representing the voices of their peers.
+      </p>
+    </div>
+
+
+    <!-- ================= HEAD OF RCL ================= -->
+    {% if head_of_rcl %}
+    <div class="mb-28">
+
+      <h2 class="text-m md:text-3xl font-semibold text-slate-900 text-center mb-12">
+        Head of RCL
+      </h2>
+
+      <!-- ✅ CENTERED FLEX (FOR 2 PEOPLE) -->
+      <div class="flex flex-wrap justify-center gap-12 max-w-4xl mx-auto">
+
+        {% for leader in head_of_rcl %}
+        <div class="group text-center transition-all duration-300 hover:-translate-y-2 w-full sm:w-[300px]">
+
+          <!-- Image -->
+          <div class="relative overflow-hidden rounded-3xl shadow-2xl h-64">
+            <img src="{{ leader.image.url }}"
+                 class="w-full h-full object-cover shadow-lg">
+
+            <!-- Hover Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+          </div>
+
+          <!-- Name -->
+          <h3 class="text-lg font-semibold text-slate-900 mt-4">
+            {{ leader.name }}
+          </h3>
+
+          <!-- Position -->
+          <p class="text-sm font-medium text-blue-600 mb-3">
+            {{ leader.position }}
+          </p>
+
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+    {% endif %}
+
+
+    <!-- ================= RCL GROUP ================= -->
+    {% if rcl_groups %}
+    <div class="mb-28">
+
+      <h2 class="text-m md:text-3xl font-semibold text-slate-900 text-center mb-6">
+         RCL Members
+      </h2>
+
+      <!-- Optional subtitle -->
+      <p class="text-center text-slate-500 mb-10">
+        Our collective student leadership team
+      </p>
+
+      <!-- ✅ CENTERED SINGLE LARGE CARD -->
+      <div class="flex justify-center">
+
+        {% for group in rcl_groups %}
+        <div class="group text-center transition-all duration-300 hover:-translate-y-2 w-full max-w-2xl">
+
+          <!-- Bigger Image -->
+          <div class="relative overflow-hidden rounded-3xl shadow-2xl h-80">
+            <img src="{{ group.image.url }}"
+                 class="w-full h-full object-cover shadow-lg">
+
+            <!-- Hover Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+          </div>
+
+          <!-- Year -->
+          <h3 class="text-lg font-semibold text-slate-900 mt-4">
+            {{ group.year }}
+          </h3>
+
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+    {% endif %}
+
+
+    <!-- ================= RCL MEMBERS ================= -->
+    <div>
+
+      
+
+      {% if rcl_members %}
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+
+        {% for member in rcl_members %}
+        <div class="group text-center transition-all duration-300 hover:-translate-y-2">
+
+          <!-- Name -->
+          <h3 class="text-lg font-semibold text-slate-900 mt-4">
+            {{ member.name }}
+          </h3>
+
+          <!-- Position -->
+          <p class="text-sm font-medium text-amber-500 mb-3">
+            {{ member.position }}
+          </p>
+
+        </div>
+        {% endfor %}
+
+      </div>
+      {% else %}
+      <p class="text-center text-gray-500 py-12">
+        No RCL members listed yet.
+      </p>
+      {% endif %}
+
+    </div>
+
+  </div>
+
+</section>
+
+{% endblock %}

@@ -12,4 +12,5 @@ urlpatterns = [
     path('top-students/', views.top_students),
     path('staff-sgb/', views.staff_sgb),
     path('newsletter/', views.newsletter),
+    path('rcl/', views.rcl),
 ]   

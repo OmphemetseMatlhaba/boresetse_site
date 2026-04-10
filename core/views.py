@@ -75,3 +75,11 @@ def newsletter(request):
     return render(request, "newsletter.html", {
         "newsletters": Newsletter.objects.all()
     })
+
+def rcl(request):
+    return render(request, "rcl.html", {
+        "rcl_members": RCL.objects.all(),
+        "head_of_rcl": head_of_rcl.objects.all(),
+        "rcl_groups": rcl_group.objects.all()
+    })
+
